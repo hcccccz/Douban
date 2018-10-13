@@ -1,4 +1,4 @@
-from prompt_toolkit import prompt, HTML
+from prompt_toolkit import prompt
 import requests
 import json
 import pprint
@@ -9,9 +9,8 @@ class Log_in:
 
 
     def prompt_info(self):
-        #self.account = prompt("Enter account: ")
-        bottom_toolbar = HTML("Douban <b><style bg='#DE0000'>Password</style></b>")
-        #self.password = prompt("Enter password: ", is_password = True, bottom_toolbar=bottom_toolbar)
+        self.account = prompt("Enter account: ")
+        self.password = prompt("Enter password: ", is_password = True)
     def log_in(self):
         data = {"apikey": "02646d3fb69a52ff072d47bf23cef8fd",
                 "client_id": "02646d3fb69a52ff072d47bf23cef8fd",
@@ -54,17 +53,14 @@ class Play_list:
         self.channel = json.loads(requests.get(Play_list.url, params = data, headers = headers ).text)['groups']
 
     def group_select(self):
-        for idx in range(len(self.channel)):
-            if idx == 0:
-                print("0. 我的私人")
-            else:
-                print("{}. {}".format(idx,self.channel[idx]['group_name']))
+
         self.select = int(prompt("Enter a group number."))
+
     def channel_select(self):
         channel = self.channel[self.select]['chls']
         for idx in range(len(channel)):
             print(channel[idx]['name'])
-
+a\
 
 
 class Player:
