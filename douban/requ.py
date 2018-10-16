@@ -1,4 +1,3 @@
-from PyInquirer import prompt
 from prompt_toolkit import prompt as p
 from pprint import pprint
 import requests
@@ -72,14 +71,6 @@ class Play_list:
                 choice['name'] = self.channel[idx]['group_name']
                 choice['value'] = self.channel[idx]['group_id']
                 choices.append(choice)
-        question = [
-        {   "type": "list",
-            "name": "group",
-            "message": "Select a group",
-            "choices": choices
-        }
-                    ]
-        self.gselect = prompt(question)
 
 
 
@@ -99,16 +90,8 @@ class Play_list:
             choice['value'] = channels[idx]['id']
             choices.append(choice)
 
-        question = [
-        {
-        "type": "list",
-        "name": "channel",
-        "message": "Select a channel",
-        "choices": choices
-        }
-        ]
 
-        self.cselect = prompt(question)
+
 
     def song(self):
         headers = {"Authorization":self.log_in.access_token}
@@ -131,7 +114,7 @@ class Play_list:
         }
         response = requests.get(self.song_url,headers=headers,params=data)
         print(response.status_code)
-        self.cselect['channel']
+
 
 
 class Player:
