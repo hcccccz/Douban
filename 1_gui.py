@@ -3,41 +3,54 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
 
-class Color(QWidget):
-
-    def __init__(self, color):
-        super().__init__()
-        self.setAutoFillBackground(True)
-
-        palette = self.palette()
-        palette.setColor(QPalette.Window, QColor(color))
-        self.setPalette(palette)
 class Window(QMainWindow):
 
     def __init__(self):
         super().__init__()
 
-        layout = QVBoxLayout()
-        layout1 = QVBoxLayout()
-        layout.addWidget(Color('blue'))
-        layout.addWidget(Color('red'))
-        layout.addWidget(Color('green'))
-        layout1.addWidget(Color('green'))
-        layout1.addWidget(Color('blue'))
-        widget = QWidget()
-        widget.setLayout(layout)
-        widget1 = QWidget()
-        widget1.setLayout(layout1)
-        layoutf = QHBoxLayout()
-        layout1.addWidget(Color('red'))
-        layoutf.addWidget(widget)
-        layoutf.addWidget(widget1)
-        layoutf.setSpacing(200)
-        widgetf = QWidget()
-        widgetf.setLayout(layoutf)
-        self.setCentralWidget(widgetf)
-        self.setGeometry(400,400,450,500)
-        self.show()
+        self.layout = QVBoxLayout()
+        self.layout1 = QGridLayout()
+        self.layout.setContentsMargins(10,50,10,10)
+
+
+        btn_l = list()
+        for n in range(1,10):
+            btn_l.insert(n-1,QPushButton(str(n)))
+        for idx in range(len(btn_l)):
+            if idx <= 2:
+                layout1.addWidget(btn_l[idx], 0, idx)
+            elif 2< idx <= 5:
+                layout1.addWidget(btn_l[idx], 1, idx-3)
+            else:
+                layout1.addWidget(btn_l[idx], 2, idx-6)
+        button0 = QPushButton("0")
+        button_di = QPushButton(b"\xc3\xb7".decode("utf8"))
+        button_ti = QPushButton("*")
+        button_poi = QPushButton(".")
+        button_eq = QPushButton("=")
+        button_pls = QPushButton("+")
+        button_min = QPushButton("-")
+        self.line = QLineEdit()
+        self.line.setTextMargins(20,20,20,20)
+        self.layout.addWidget(line)
+        self.layout.addStretch()
+        layout1.addWidget(button_pls, 0, 3)
+        layout1.addWidget(button_min, 1, 3)
+        layout1.addWidget(button_ti, 2, 3)
+        layout1.addWidget(button_di, 3, 3)
+        layout1.addWidget(button0, 3, 0)
+        layout1.addWidget(button_eq, 3, 2)
+        layout1.addWidget(button_poi, 3, 1)
+
+
+
+        layout.addLayout(layout1)
+        w = QWidget()
+        w.setLayout(layout)
+        self.setCentralWidget(w)
+        self.setGeometry(400,400,600,500)
+
 app = QApplication([])
 ex = Window()
+ex.show()
 app.exec_()

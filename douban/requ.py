@@ -79,7 +79,7 @@ class Play_list:
         channels = self.channel[self.gselect['group']]['chls']
         while len(channels) == 0:
             print(channels)
-            print("This group is empty")
+            print("This group is empty?")
             time.sleep(0.5)
             self.group_select()
             channels = self.channel[self.gselect['group']]['chls']
