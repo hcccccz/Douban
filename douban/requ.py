@@ -1,4 +1,3 @@
-from prompt_toolkit import prompt as p
 from pprint import pprint
 import requests
 import json

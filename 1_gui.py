@@ -7,12 +7,12 @@ class Window(QMainWindow):
 
     def __init__(self):
         super().__init__()
+        self.init_ui()
 
-        self.layout = QVBoxLayout()
-        self.layout1 = QGridLayout()
-        self.layout.setContentsMargins(10,50,10,10)
-
-
+    def init_ui(self):
+        layout = QVBoxLayout()
+        layout1 = QGridLayout()
+        layout.setContentsMargins(10,50,10,10)
         btn_l = list()
         for n in range(1,10):
             btn_l.insert(n-1,QPushButton(str(n)))
@@ -27,13 +27,14 @@ class Window(QMainWindow):
         button_di = QPushButton(b"\xc3\xb7".decode("utf8"))
         button_ti = QPushButton("*")
         button_poi = QPushButton(".")
+        print(button_poi.text())
         button_eq = QPushButton("=")
         button_pls = QPushButton("+")
         button_min = QPushButton("-")
         self.line = QLineEdit()
         self.line.setTextMargins(20,20,20,20)
-        self.layout.addWidget(line)
-        self.layout.addStretch()
+        layout.addWidget(self.line)
+        layout.addStretch()
         layout1.addWidget(button_pls, 0, 3)
         layout1.addWidget(button_min, 1, 3)
         layout1.addWidget(button_ti, 2, 3)
@@ -41,9 +42,6 @@ class Window(QMainWindow):
         layout1.addWidget(button0, 3, 0)
         layout1.addWidget(button_eq, 3, 2)
         layout1.addWidget(button_poi, 3, 1)
-
-
-
         layout.addLayout(layout1)
         w = QWidget()
         w.setLayout(layout)
