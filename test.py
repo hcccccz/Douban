@@ -1,5 +1,8 @@
-p = lambda x:x+1
-def p1():
-    print("call")
-print(callable(p1()))
-""
+class Dog:
+    def init(self):
+        self.bark = "wowowo"
+        self.barkk()
+    def barkk(self):
+        print(self.bark)
+dog = Dog()
+dog.init()
