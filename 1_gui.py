@@ -13,24 +13,23 @@ class Window(QMainWindow):
         layout = QVBoxLayout()
         layout1 = QGridLayout()
         layout.setContentsMargins(10,50,10,10)
-        btn_l = list()
+        self.btn_l = list()
         for n in range(1,10):
-            btn_l.insert(n-1,QPushButton(str(n)))
-        for idx in range(len(btn_l)):
+            self.btn_l.insert(n-1,QPushButton(str(n)))
+        for idx in range(len(self.btn_l)):
             if idx <= 2:
-                layout1.addWidget(btn_l[idx], 0, idx)
+                layout1.addWidget(self.btn_l[idx], 0, idx)
             elif 2< idx <= 5:
-                layout1.addWidget(btn_l[idx], 1, idx-3)
+                layout1.addWidget(self.btn_l[idx], 1, idx-3)
             else:
-                layout1.addWidget(btn_l[idx], 2, idx-6)
-        button0 = QPushButton("0")
-        button_di = QPushButton(b"\xc3\xb7".decode("utf8"))
-        button_ti = QPushButton("*")
-        button_poi = QPushButton(".")
-        print(button_poi.text())
-        button_eq = QPushButton("=")
-        button_pls = QPushButton("+")
-        button_min = QPushButton("-")
+                layout1.addWidget(self.btn_l[idx], 2, idx-6)
+        self.btn_l.append(QPushButton("0"))
+        self.btn_l.append(QPushButton(b"\xc3\xb7".decode("utf8")))
+        self.btn_l.append(QPushButton("*"))
+        self.btn_l.append(QPushButton("."))
+        self.btn_l.append(QPushButton("="))
+        self.btn_l.append(QPushButton("+"))
+        self.btn_l.append(QPushButton("-"))
         self.line = QLineEdit()
         self.line.setTextMargins(20,20,20,20)
         layout.addWidget(self.line)
