@@ -1,4 +1,4 @@
-from douban.requ import Log_in
+
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
@@ -98,9 +98,13 @@ class Window(QMainWindow):
         if button.text() != "=":
             self.line.insert(button.text())
         else:
-            answer = eval(self.line.text())
-            self.line.setText(str(answer))
-    
+            try:
+                answer = eval(self.line.text())
+                self.line.setText(str(answer))
+            except:
+                self.line.setText(str("Input is invalid"))
+
+
 
 app = QApplication([])
 ex = Window()
