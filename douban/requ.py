@@ -8,10 +8,6 @@ class Log_in:
         self.prompt_info()
         self.log_in()
 
-
-    def prompt_info(self):
-        self.account = p("Enter account: ")
-        self.password = p("Enter password: ", is_password = True)
     def log_in(self):
         data = {"apikey": "02646d3fb69a52ff072d47bf23cef8fd",
                 "client_id": "02646d3fb69a52ff072d47bf23cef8fd",
@@ -30,9 +26,6 @@ class Log_in:
             self.access_token = "Bearer " + response["access_token"]
             self.expire = response["expires_in"]
             self.username = response["douban_user_name"]
-            print("Log in success!")
-            print("Welcome!", self.username)
-
         except:
             print("Log in fail")
 
