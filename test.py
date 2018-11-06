@@ -1,18 +1,35 @@
-class Color:
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
 
-    def __init__(self,rgb,name):
-        self.rgb = rgb
-        self.__name = name
-    def set_name(self,name):
-        if not isinstance(name,str):
-            raise TypeError("nane is not valid")
-        self.__name = name
-    def get_name(self):
-        return self.__name
-    def del_name(self):
-        del self.__name
-        print("del")
-    c = property(get_name,set_name,del_name)
+class Window(QMainWindow):
 
-c = Color(1,"red")
-del c.c
+    def __init__(self):
+        super().__init__()
+        w = W()
+        global w1
+        w1 = QLabel("nt")
+        self.setCentralWidget(w)
+        self.setGeometry(1000,500,600,600)
+        self.show()
+        w.destroyed.connect(self.set)
+    def set(self):
+        
+        self.setCentralWidget(w1)
+
+class W(QWidget):
+
+    def __init__(self):
+        super().__init__()
+        self.ui()
+    def ui(self):
+        label = QLabel("hi",self)
+        label.move(250,250)
+        btn = QPushButton("ex",self)
+        btn.move(400,400)
+        btn.clicked.connect(self.shift)
+    def shift(self):
+        self.deleteLater()
+
+app = QApplication([])
+window = Window()
+app.exec_()

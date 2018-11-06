@@ -1,0 +1,17 @@
+
+QMainWindow {
+background-color:black;
+
+
+}
+QPushButton {
+color:white;
+font-size:30px;
+}
+QPushButton:hover {
+color:white;
+font-size:50px;
+width:50;
+border:None;
+
+}
